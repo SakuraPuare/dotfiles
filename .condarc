@@ -14,6 +14,5 @@ custom_channels:
   pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   deepmodeling: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
-ssl_verify: /opt/mambaforge/ssl/cacert.pem
 show_channel_urls: true
 auto_activate_base: false

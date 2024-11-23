@@ -19,3 +19,12 @@
 	helper = !/usr/bin/gh auth git-credential
 [http]
 	postBuffer = 157286400
+[core]
+	autocrlf = input
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[proxy]
+	http = http://localhost:7890
+	https = http://localhost:7890

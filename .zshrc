@@ -148,7 +148,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 export EDITOR='nvim'
 
 export LANG="zh_CN.UTF-8"
@@ -162,9 +161,9 @@ export PATH="$PATH:/home/sakurapuare/.local/share/JetBrains/Toolbox/scripts"
 
 alias vim='nvim'
 alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-alias la='ls -lad .* --color=auto'
-alias lh='ls -alths --color=auto'
+alias ll='lsd -l --color=auto'
+alias la='lsd -lad .* --color=auto'
+alias lh='lsd -alths --color=auto'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../../..'
@@ -212,40 +211,32 @@ alias pacman='sudo pacman'
 export PATH=$PATH:~/.config/nvim/bin
 export PATH=~/.console-ninja/.bin:$PATH
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+export PATH="$PATH:/home/sakurapuare/.yarn/bin"
 
-alias pack='cd ~/Project/application-pnc && tar -zcvf ~/Desktop/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning modules/routing'
+alias pack='cd ~/Project/application-pnc && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning'
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
 alias github='github-desktop'
 
-source /usr/share/nvm/init-nvm.sh
+alias yay='paru'
 
 [ -s /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ] && \. "/opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash"
-[ -f /opt/mambaforge/etc/profile.d/conda.sh ] && source /opt/mambaforge/etc/profile.d/conda.sh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/opt/mambaforge/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/mambaforge/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/opt/mambaforge/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
-
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper_lazy.sh
-export VCPKG_ROOT=$HOME/.local/share/vcpkg
 
 autoload bashcompinit
 bashcompinit
 
-source /home/sakurapuare/.local/share/vcpkg/scripts/vcpkg_completion.zsh
+
+# pnpm
+export PNPM_HOME="/home/sakurapuare/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+alias genpass="openssl rand -base64 30 | tr -d "\n" | cut -c1-15"
+
+export PATH="/usr/lib/ccache/bin/:$PATH"
+export PATH="/usr/lib/colorgcc/bin/:$PATH"
+export CCACHE_PATH="/usr/bin"    
+[ -f /opt/miniforge/etc/profile.d/conda.sh ] && source /opt/miniforge/etc/profile.d/conda.sh
+source /usr/share/nvm/init-nvm.sh

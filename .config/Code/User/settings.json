@@ -1,6 +1,7 @@
 {
     "editor.fontSize": 18,
     "editor.fontFamily": "Consolas",
+    "editor.fontLigatures": true,
     "git.enableSmartCommit": true,
     "editor.inlineSuggest.enabled": true,
     "workbench.iconTheme": "material-icon-theme",
@@ -9,7 +10,7 @@
     },
     "[python]": {
         "editor.defaultFormatter": "ms-python.autopep8",
-        "editor.formatOnSave": true,
+        "editor.formatOnSave": false,
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"
         },
@@ -19,7 +20,7 @@
         "black"
     ],
     "[cpp]": {
-        "editor.defaultFormatter": "xaver.clang-format"
+        "editor.defaultFormatter": "ms-vscode.cpptools"
     },
     "[c]": {
         "editor.defaultFormatter": "ms-vscode.cpptools"
@@ -34,7 +35,7 @@
         "editor.defaultFormatter": "vscode.css-language-features"
     },
     "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -55,7 +56,22 @@
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "[proto3]": {
+        "editor.defaultFormatter": "zxh404.vscode-proto3"
+    },
     "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ]
+        },
         {
             "name": "xelatex",
             "command": "xelatex",
@@ -63,17 +79,6 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
                 "%DOC%"
             ]
         },
@@ -98,6 +103,12 @@
         }
     ],
     "latex-workshop.latex.recipes": [
+        // {
+        //     "name": "latexmk",
+        //     "tools": [
+        //         "latexmk"
+        //     ]
+        // },
         {
             "name": "xelatex",
             "tools": [
@@ -120,12 +131,6 @@
         //         "bibtex",
         //         "xelatex",
         //         "xelatex"
-        //     ]
-        // },
-        // {
-        //     "name": "latexmk",
-        //     "tools": [
-        //         "latexmk"
         //     ]
         // },
         // {
@@ -173,7 +178,6 @@
     "animations.Enabled": true,
     "editor.cursorSmoothCaretAnimation": "on",
     "animations.Install-Method": "Apc Customize UI++",
-    "vsicons.dontShowNewVersionMessage": true,
     "git.autofetch": true,
     "redhat.telemetry.enabled": true,
     "terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -197,103 +201,7 @@
     "diffEditor.maxComputationTime": 0,
     "background.fullscreen": {
         "images": [
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1159@19-11-2023_23-52-18.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_935@23-03-2023_22-53-37.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_895@13-02-2023_20-18-54.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_265@02-10-2021_09-53-31.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_853@13-01-2023_22-22-53.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1004@07-06-2023_22-20-25.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_719@09-10-2022_15-41-25.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2870@22-10-2023_15-48-14.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_218@09-09-2021_13-16-44.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_3047@25-11-2023_11-19-57.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_826@29-12-2022_18-42-36.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_86@03-06-2021_21-24-35.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2683@16-09-2023_17-32-02.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_488@22-03-2022_23-59-55.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_310@08-11-2021_15-25-30.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2206@27-04-2023_13-30-50.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1728@13-01-2023_23-08-56.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_946@02-04-2023_23-13-49.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_32@10-05-2021_19-30-40.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_810@21-10-2022_20-09-29.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1502@02-01-2023_10-13-09.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_801@13-12-2022_00-28-20.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_740@06-11-2022_18-37-44.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1246@05-02-2024_19-33-30.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_314@12-11-2021_22-07-07.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_266@03-10-2021_10-48-25.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1659@10-01-2023_09-18-32.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_806@21-10-2022_20-09-29.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_671@16-08-2022_07-59-28.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1103@17-09-2023_21-34-02.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1334@18-12-2022_22-26-52.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_979@10-11-2022_22-16-14.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_713@17-10-2022_12-56-20.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_13@04-05-2021_14-57-44.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1533@04-01-2023_14-36-13.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1997@28-02-2023_00-19-12.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_693@06-09-2022_15-21-13.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1069@10-08-2023_19-42-32.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1732@13-01-2023_23-08-57.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_297@28-10-2021_13-53-50.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_136@04-07-2021_12-33-04.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1085@27-08-2023_21-27-19.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1096@09-09-2023_20-35-18.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_962@23-04-2023_21-29-59.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1020@24-06-2023_19-25-43.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2023@05-03-2023_16-46-34.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_231@13-09-2021_09-50-16.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_322@19-11-2021_18-51-24.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1228@25-01-2024_19-56-44.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_35@14-10-2022_15-43-19.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_301@31-10-2021_18-06-40.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_3526@21-03-2024_17-18-02.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2772@05-10-2023_23-39-12.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1342@20-12-2022_19-41-15.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1933@08-02-2023_21-54-20.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_970@02-05-2023_14-30-53.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_24@07-05-2021_15-09-44.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_292@24-10-2021_09-25-14.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1224@24-01-2024_16-50-52.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_3268@04-01-2024_23-25-07.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_99@14-10-2022_16-15-02.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_647@26-07-2022_21-42-49.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_698@16-10-2022_20-27-04.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2424@12-07-2023_02-20-35.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2833@19-10-2023_16-24-03.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_22@06-05-2021_22-16-33.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2@02-05-2021_18-48-21.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_401@08-01-2022_12-27-23.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_883@05-02-2023_11-24-01.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_173@30-07-2021_20-24-41.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_163@14-10-2022_17-30-46.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_993@29-05-2023_19-17-08.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1492@01-01-2023_21-21-17.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_679@24-08-2022_20-03-32.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_866@22-01-2023_00-00-40.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_70@26-05-2021_09-01-24.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_354@09-12-2021_22-04-26.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_943@01-04-2023_14-36-45.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_773@20-10-2022_09-00-18.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_103@15-06-2021_18-57-43.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1033@17-11-2022_22-44-42.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_244@19-09-2021_14-25-24.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_237@17-09-2021_10-22-39.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1168@03-12-2022_20-47-14.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2887@24-10-2023_16-02-06.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_416@19-01-2022_17-36-00.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1811@23-01-2023_22-03-57.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_2325@12-06-2023_13-30-31.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_1835@27-01-2023_11-03-31.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_177@03-08-2021_18-17-21.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_849@11-01-2023_19-51-34.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_3199@25-12-2023_10-37-09.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_642@22-07-2022_19-12-12.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_777@28-11-2022_20-00-15.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_3362@10-02-2024_18-08-16.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_429@26-01-2022_11-02-32.jpg",
-            "file:///home/sakurapuare/Pictures/Background/landscape/photo_33@11-05-2021_14-37-03.jpg"
+            
         ],
         "opacity": 0.95,
         "size": "cover",
@@ -317,8 +225,9 @@
         "workbench.action.tasks.runTask"
     ],
     "apc.imports": [
-        "file:///home/sakurapuare/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.3/dist/updateHandler.js",
-        "file:///home/sakurapuare/.config/Code/User/style.css"
+        "file:///~/.config/Code/User/style.css",
+        "file:///C:/Users/SakuraPuare/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js",
+        "file:///~/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js"
     ],
     "workbench.colorTheme": "Pink Cat Boo",
     "vs-kubernetes": {
@@ -328,4 +237,22 @@
     },
     "RainbowBrackets.depreciation-notice": false,
     "clang-format.fallbackStyle": "Google",
+    "debug.onTaskErrors": "abort",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "jupyter.askForKernelRestart": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "[go]": {
+        "editor.formatOnSave": false
+    },
+    "makefile.configureOnOpen": true,
+    "terminal.integrated.env.windows": {},
+    "github.copilot.preferredAccount": "howstay",
 }
