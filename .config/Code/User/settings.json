@@ -1,6 +1,6 @@
 {
     "editor.fontSize": 18,
-    "editor.fontFamily": "Consolas",
+    "editor.fontFamily": "Maple Mono NF CN",
     "editor.fontLigatures": true,
     "git.enableSmartCommit": true,
     "editor.inlineSuggest.enabled": true,
@@ -109,12 +109,12 @@
         //         "latexmk"
         //     ]
         // },
-        {
-            "name": "xelatex",
-            "tools": [
-                "xelatex"
-            ]
-        },
+        // {
+        //     "name": "xelatex",
+        //     "tools": [
+        //         "xelatex"
+        //     ]
+        // },
         // {
         //     "name": "pdflatex -> bibtex -> pdflatex*2",
         //     "tools": [
@@ -124,15 +124,15 @@
         //         "pdflatex"
         //     ]
         // },
-        // {
-        //     "name": "xelatex -> bibtex -> xelatex*2",
-        //     "tools": [
-        //         "xelatex",
-        //         "bibtex",
-        //         "xelatex",
-        //         "xelatex"
-        //     ]
-        // },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
         // {
         //     "name": "pdflatex -> bibtex",
         //     "tools": [
@@ -184,7 +184,7 @@
     "update.mode": "manual",
     "terminal.integrated.inheritEnv": false,
     "cmake.configureOnOpen": true,
-    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontFamily": "Maple Mono NF CN",
     "security.workspace.trust.untrustedFiles": "open",
     "tailwindCSS.emmetCompletions": true,
     "terminal.integrated.env.linux": {},
@@ -196,7 +196,7 @@
     },
     "workbench.startupEditor": "none",
     "liveServer.settings.donotShowInfoMsg": true,
-    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.ignoreTrimWhitespace": true,
     "github.copilot.editor.enableAutoCompletions": true,
     "diffEditor.maxComputationTime": 0,
     "background.fullscreen": {
@@ -242,7 +242,8 @@
         "*": true,
         "plaintext": false,
         "markdown": true,
-        "scminput": false
+        "scminput": false,
+        "cpp": false
     },
     "jupyter.askForKernelRestart": false,
     "notebook.cellToolbarLocation": {
@@ -255,4 +256,20 @@
     "makefile.configureOnOpen": true,
     "terminal.integrated.env.windows": {},
     "github.copilot.preferredAccount": "howstay",
+    "background.enabled": true,
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "clangd.inactiveRegions.useBackgroundHighlight": true,
+    "qt-core.qtInstallationRoot": "/home/sakurapuare/Qt",
+    "window.confirmSaveUntitledWorkspace": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 4,
+    "cline.preferredLanguage": "Simplified Chinese - 简体中文",
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "C_Cpp.default.cppStandard": "c++23",
 }

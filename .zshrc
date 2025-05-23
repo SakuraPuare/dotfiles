@@ -144,8 +144,6 @@ unset key
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export EDITOR='nvim'
@@ -155,9 +153,11 @@ export LANGUAGE="zh_CN.UTF-8"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/autojump/autojump.zsh
+# source /usr/share/autojump/autojump.zsh
+[[ -s /home/sakurapuare/.autojump/etc/profile.d/autojump.sh ]] && source /home/sakurapuare/.autojump/etc/profile.d/autojump.sh
 
-export PATH="$PATH:/home/sakurapuare/.local/share/JetBrains/Toolbox/scripts"
+
+export PATH="$PATH:/home/sakurapuare/.local/share/JetBrains/Toolbox/scripts:/home/sakurapuare/Qt/6.9.0/gcc_64/bin/"
 
 alias vim='nvim'
 alias ls='ls --color=auto'
@@ -202,28 +202,24 @@ alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 alias clashrestart='sudo systemctl restart clash.service'
 alias wget='wget -c'
-#alias systemctl='sudo systemctl'
-alias cp='rsync -av'
+# alias systemctl='sudo systemctl'
+alias cp='rsync -arvP'
 alias pacman='sudo pacman'
-#alias docker='sudo docker'
-#alias aem='sudo aem'
+# alias docker='sudo docker'
+# alias aem='sudo aem'
 
-export PATH=$PATH:~/.config/nvim/bin
-export PATH=~/.console-ninja/.bin:$PATH
+export PATH="$PATH:/home/sakurapuare/.config/nvim/bin"
 export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 export PATH="$PATH:/home/sakurapuare/.yarn/bin"
-
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 alias pack='cd ~/Project/application-pnc && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning'
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
 alias github='github-desktop'
 
 alias yay='paru'
 
-[ -s /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ] && \. "/opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash"
-
 autoload bashcompinit
 bashcompinit
-
 
 # pnpm
 export PNPM_HOME="/home/sakurapuare/.local/share/pnpm"
@@ -235,8 +231,36 @@ esac
 
 alias genpass="openssl rand -base64 30 | tr -d "\n" | cut -c1-15"
 
+export PATH="$PATH:/home/sakurapuare/.local/bin"
 export PATH="/usr/lib/ccache/bin/:$PATH"
 export PATH="/usr/lib/colorgcc/bin/:$PATH"
+export PATH=~/.console-ninja/.bin:$PATH
 export CCACHE_PATH="/usr/bin"    
-[ -f /opt/miniforge/etc/profile.d/conda.sh ] && source /opt/miniforge/etc/profile.d/conda.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/miniforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/miniforge/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/miniforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/opt/miniforge/etc/profile.d/mamba.sh" ]; then
+    . "/opt/miniforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+alias clear="TERM=xterm /usr/bin/clear"
+export GTK_IM_MODULE=fcitx
+
+[ -s /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ] && \. "/opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash"
+
 source /usr/share/nvm/init-nvm.sh
+alias pnpm="cnpm"
+export PATH=$PATH:/opt/apache-spark/bin
