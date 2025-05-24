@@ -1,0 +1,246 @@
+{
+    "editor.fontSize": 18,
+    "editor.fontFamily": "Maple Mono NF CN",
+    "editor.fontLigatures": true,
+    "git.enableSmartCommit": true,
+    "editor.inlineSuggest.enabled": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "isort.args": [
+        "--profile",
+        "black"
+    ],
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "vscode.css-language-features"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[proto3]": {
+        "editor.defaultFormatter": "zxh404.vscode-proto3"
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-xelatex",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.synctex.gz",
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    "latex-workshop.showContextMenu": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "explorer.confirmDragAndDrop": false,
+    "latex-workshop.bibtex-fields.sort.enabled": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmPasteNative": false,
+    "cmake.showOptionsMovedNotification": false,
+    "animations.Enabled": true,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "animations.Install-Method": "Apc Customize UI++",
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": true,
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "update.mode": "manual",
+    "terminal.integrated.inheritEnv": false,
+    "cmake.configureOnOpen": true,
+    "terminal.integrated.fontFamily": "Maple Mono NF CN",
+    "security.workspace.trust.untrustedFiles": "open",
+    "tailwindCSS.emmetCompletions": true,
+    "terminal.integrated.env.linux": {},
+    "console-ninja.featureSet": "Community",
+    "remote.autoForwardPortsSource": "hybrid",
+    "git.confirmSync": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.startupEditor": "none",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "diffEditor.ignoreTrimWhitespace": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "diffEditor.maxComputationTime": 0,
+    "background.fullscreen": {
+        "images": [],
+        "opacity": 0.95,
+        "size": "cover",
+        "position": "center",
+        "interval": 60
+    },
+    "background.interval": 60,
+    "background.style": {
+        "background-position": "100% 100%",
+        "background-size": "auto",
+        "opacity": 1
+    },
+    "prettier.semi": true,
+    "prettier.trailingComma": "all",
+    "editor.linkedEditing": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "gitlens.graph.minimap.dataType": "lines",
+    "gitlens.ai.experimental.model": "openai:gpt-4o",
+    "cmake.pinnedCommands": [
+        "workbench.action.tasks.configureTaskRunner",
+        "workbench.action.tasks.runTask"
+    ],
+    "apc.imports": [
+        "file:///~/.config/Code/User/style.css",
+        "file:///C:/Users/SakuraPuare/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js",
+        "file:///~/.vscode/extensions/brandonkirbyson.vscode-animations-2.0.4/dist/updateHandler.js"
+    ],
+    "workbench.colorTheme": "Pink Cat Boo",
+    "vs-kubernetes": {
+        "vscode-kubernetes.helm-path-linux": "/home/sakurapuare/.local/state/vs-kubernetes/tools/helm/linux-amd64/helm",
+        "vscode-kubernetes.kubectl-path-linux": "/home/sakurapuare/.local/state/vs-kubernetes/tools/kubectl/kubectl",
+        "vscode-kubernetes.minikube-path-linux": "/home/sakurapuare/.local/state/vs-kubernetes/tools/minikube/linux-amd64/minikube"
+    },
+    "RainbowBrackets.depreciation-notice": false,
+    "clang-format.fallbackStyle": "Google",
+    "debug.onTaskErrors": "abort",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false,
+        "cpp": false
+    },
+    "jupyter.askForKernelRestart": false,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "[go]": {
+        "editor.formatOnSave": false
+    },
+    "makefile.configureOnOpen": true,
+    "terminal.integrated.env.windows": {},
+    "github.copilot.preferredAccount": "howstay",
+    "background.enabled": true,
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "clangd.inactiveRegions.useBackgroundHighlight": true,
+    "qt-core.qtInstallationRoot": "/home/sakurapuare/Qt",
+    "window.confirmSaveUntitledWorkspace": false,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.tabWidth": 4,
+    "cline.preferredLanguage": "Simplified Chinese - 简体中文",
+    "remote.defaultExtensionsIfInstalledLocally": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "GitHub.vscode-pull-request-github"
+    ],
+    "C_Cpp.default.cppStandard": "c++23",
+    "cursor.cpp.disabledLanguages": [
+        "plaintext",
+        "scminput",
+        "cpp"
+    ]
+}

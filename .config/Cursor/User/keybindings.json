@@ -1,0 +1,23 @@
+// 将键绑定放在此文件中以覆盖默认值
+[
+    {
+        "key": "ctrl+shift+i",
+        "command": "-editor.action.formatDocument.none",
+        "when": "editorTextFocus && !editorHasDocumentFormattingProvider && !editorReadonly"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-filesExplorer.findInFolder",
+        "when": "explorerResourceIsFolder && filesExplorerFocus && foldersViewVisible && !inputFocus"
+    },
+    {
+        "key": "shift+alt+f",
+        "command": "-search.action.restrictSearchToFolder",
+        "when": "folderMatchWithResourceFocus && searchViewletVisible"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.files.action.createFileFromExplorer",
+        "when": "view == 'workbench.explorer.fileView'"
+    }
+]
