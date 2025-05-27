@@ -5,6 +5,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [[ -z "$ZPROFILE_SOURCED" ]]; then
+    source ~/.zprofile
+    export ZPROFILE_SOURCED=1
+fi
+
 # Start configuration added by Zim install {{{
 #
 # User configuration sourced by interactive shells
@@ -221,8 +226,8 @@ bashcompinit
 alias genpass="openssl rand -base64 30 | tr -d "\n" | cut -c1-15"
 
 export PATH="$PATH:/home/sakurapuare/.local/bin"
-export PATH="/usr/lib/ccache/bin/:$PATH"
-export PATH="/usr/lib/colorgcc/bin/:$PATH"
+#export PATH="/usr/lib/ccache/bin/:$PATH"
+#export PATH="/usr/lib/colorgcc/bin/:$PATH"
 export CCACHE_PATH="/usr/bin"
 
 alias clear="TERM=xterm /usr/bin/clear"
