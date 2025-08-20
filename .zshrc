@@ -161,7 +161,7 @@ export LANGUAGE="zh_CN.UTF-8"
 [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # autojump 配置
-[ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
+[ -f /usr/share/autojump/autojump.zsh ] && . /usr/share/autojump/autojump.zsh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # JetBrains Toolbox 路径
@@ -225,7 +225,7 @@ alias wget='wget -c'
 alias cp='rsync -arvP'
 alias pacman='sudo pacman'
 alias yay='paru'
-
+alias fdfind='fd'
 alias pack='cd ~/Project/application-pnc && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning'
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
 alias github='github-desktop'
@@ -249,8 +249,7 @@ alias clear="TERM=xterm /usr/bin/clear"
 
 export PATH=$PATH:/opt/apache-spark/bin
 
-#alias cd='autojump'
-alias j='autojump'
+alias cd='autojump'
 
 PATH=~/.console-ninja/.bin:$PATH
 
