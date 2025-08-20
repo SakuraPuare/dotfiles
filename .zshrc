@@ -169,7 +169,10 @@ export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 # nvim 和 Go 环境配置
 export PATH="$PATH:$HOME/.config/nvim/bin"
-export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+# Go 环境配置 - 检查是否安装了 Go
+if command -v go &> /dev/null; then
+    export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+fi
 
 alias vim='nvim'
 
