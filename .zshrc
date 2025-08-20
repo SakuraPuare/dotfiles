@@ -249,8 +249,6 @@ alias clear="TERM=xterm /usr/bin/clear"
 
 export PATH=$PATH:/opt/apache-spark/bin
 
-alias cd='autojump'
-
 PATH=~/.console-ninja/.bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
