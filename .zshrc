@@ -154,19 +154,31 @@ export EDITOR='nvim'
 export LANG="zh_CN.UTF-8"
 export LANGUAGE="zh_CN.UTF-8"
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /usr/share/autojump/autojump.zsh
-# [[ -s /home/sakurapuare/.autojump/etc/profile.d/autojump.sh ]] && source /home/sakurapuare/.autojump/etc/profile.d/autojump.sh
-eval "$(zoxide init zsh)"
+# 插件加载 - 兼容 Arch Linux 和 macOS
+[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-export PATH="$PATH:/home/sakurapuare/.local/share/JetBrains/Toolbox/scripts"
+# autojump 配置
+[ -f /usr/share/autojump/autojump.zsh ] && source /usr/share/autojump/autojump.zsh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+# JetBrains Toolbox 路径
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# nvim 和 Go 环境配置
+export PATH="$PATH:$HOME/.config/nvim/bin"
+export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
 
 alias vim='nvim'
-alias ls='ls --color=auto'
+
+# ls 命令别名
+alias ls='lsd --color=auto'
 alias ll='lsd -l --color=auto'
 alias la='lsd -lad .* --color=auto'
 alias lh='lsd -alths --color=auto'
+
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../../..'
@@ -190,6 +202,8 @@ alias svi='sudo vi'
 # alias mv='mv -i'
 # alias cp='cp -i'
 # alias ln='ln -i'
+
+# 系统命令别名
 alias rm='rm --preserve-root'
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
@@ -205,39 +219,46 @@ alias halt='sudo /sbin/halt'
 alias shutdown='sudo /sbin/shutdown'
 alias clashrestart='sudo systemctl restart clash.service'
 alias wget='wget -c'
-# alias systemctl='sudo systemctl'
 alias cp='rsync -arvP'
 alias pacman='sudo pacman'
-# alias docker='sudo docker'
-# alias aem='sudo aem'
-
-export PATH="$PATH:/home/sakurapuare/.config/nvim/bin"
-export PATH="$PATH:$(go env GOBIN):$(go env GOPATH)/bin"
+alias yay='paru'
 
 alias pack='cd ~/Project/application-pnc && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning'
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
 alias github='github-desktop'
-
-alias yay='paru'
 
 autoload bashcompinit
 bashcompinit
 
 alias genpass="openssl rand -base64 30 | tr -d "\n" | cut -c1-15"
 
-export PATH="$PATH:/home/sakurapuare/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+# ccache 配置
 #export PATH="/usr/lib/ccache/bin/:$PATH"
 #export PATH="/usr/lib/colorgcc/bin/:$PATH"
 export CCACHE_PATH="/usr/bin"
 
 alias clear="TERM=xterm /usr/bin/clear"
 
+# Apollo 环境配置
 [ -s /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ] && \. "/opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash"
 
-source /usr/share/nvm/init-nvm.sh
 export PATH=$PATH:/opt/apache-spark/bin
 
-alias cd='z'
-alias j='z'
+#alias cd='autojump'
+alias j='autojump'
 
 PATH=~/.console-ninja/.bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/sakurapuare/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
