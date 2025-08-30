@@ -21,6 +21,10 @@
 	postBuffer = 157286400
 [core]
 	autocrlf = input
+	compression = 9
+	whitespace = fix
+	editor = nvim
+	preloadindex = true
 [push]
 	autoSetupRemote = true
 [pull]
@@ -32,3 +36,5 @@
 	mail = -
 [credential]
 	helper = store
+[branch]
+	autoSetupMerge = simple

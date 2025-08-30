@@ -52,3 +52,11 @@ source /usr/share/nvm/init-nvm.sh
 if [ -e /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ]; then . /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash; fi
 
 PATH=~/.console-ninja/.bin:$PATH
+# FIDDLER_EVERYWHERE_SCRIPT_START
+if [ -n "$FE_STARTED" ] && [ -s '/tmp/.mount_fiddlehxksNp/resources/app/out/assets/scripts/startup-linux.sh' ] && [ "$STARTUP_SOURCED" != "true" ] ; then
+    source '/tmp/.mount_fiddlehxksNp/resources/app/out/assets/scripts/startup-linux.sh'
+    STARTUP_SOURCED="true"
+fi
+# FIDDLER_EVERYWHERE_SCRIPT_END
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path bash)"

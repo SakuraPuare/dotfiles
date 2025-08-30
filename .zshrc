@@ -226,7 +226,9 @@ alias cp='rsync -arvP'
 alias pacman='sudo pacman'
 alias yay='paru'
 alias fdfind='fd'
-alias pack='cd ~/Project/application-pnc && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz modules/planning'
+alias j='autojump'
+
+alias pack='cd ~/apollo/application-pnc/ && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz --exclude=\*.pt --exclude=\*.md --exclude=\*.png --exclude=\*.jpg modules/planning profiles/default' 
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
 alias github='github-desktop'
 
