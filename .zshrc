@@ -154,15 +154,52 @@ export EDITOR='nvim'
 export LANG="zh_CN.UTF-8"
 export LANGUAGE="zh_CN.UTF-8"
 
-# 插件加载 - 兼容 Arch Linux 和 macOS
-[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# 系统检测和平台信息
+case "$(uname -s)" in
+    Darwin*)
+        OS="macos"
+        ;;
+    Linux*)
+        if [ -f /etc/arch-release ]; then
+            OS="arch"
+        elif [ -f /etc/debian_version ]; then
+            OS="ubuntu"
+        else
+            OS="linux"
+        fi
+        ;;
+    *)
+        OS="unknown"
+        ;;
+esac
 
-# autojump 配置
-[ -f /usr/share/autojump/autojump.zsh ] && . /usr/share/autojump/autojump.zsh
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+# 显示系统信息 (可选，用于调试)
+# echo "检测到系统: $OS ($(uname -s))"
+
+# 插件加载 - 跨平台兼容 (Ubuntu/Arch/macOS)
+# 注意：Zim 框架已经提供了这些插件，这里作为备用加载
+if [[ "$OS" == "macos" ]]; then
+    # macOS (Homebrew)
+    [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [[ "$OS" == "arch" ]]; then
+    # Arch Linux
+    [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    [ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+elif [[ "$OS" == "ubuntu" ]]; then
+    # Ubuntu/Debian
+    [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# autojump 配置 - 跨平台兼容
+if [[ "$OS" == "macos" ]]; then
+    [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+elif [[ "$OS" == "arch" ]]; then
+    [ -f /usr/share/autojump/autojump.zsh ] && . /usr/share/autojump/autojump.zsh
+elif [[ "$OS" == "ubuntu" ]]; then
+    [ -f /usr/share/autojump/autojump.zsh ] && . /usr/share/autojump/autojump.zsh
+fi
 
 # JetBrains Toolbox 路径
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
@@ -206,27 +243,56 @@ alias svi='sudo vi'
 # alias cp='cp -i'
 # alias ln='ln -i'
 
-# 系统命令别名
-alias rm='rm --preserve-root'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
-alias psg='ps -ef | grep '
-alias psme='ps -ef | grep $USER --color=auto '
-alias meminfo='free -h -l -t'
+# 系统命令别名 - 跨平台兼容
+# 安全别名 (仅 Linux)
+if [[ "$OS" != "macos" ]]; then
+    # alias rm='rm --preserve-root'
+    # alias chown='chown --preserve-root'
+    # alias chmod='chmod --preserve-root'
+    # alias chgrp='chgrp --preserve-root'
+fi
+
+# 进程和系统信息
+if [[ "$OS" == "macos" ]]; then
+    alias psg='ps aux | grep '
+    alias psme='ps aux | grep $USER'
+    alias meminfo='vm_stat'
+    alias ports='netstat -an | grep LISTEN'
+    alias reboot='sudo reboot'
+    alias poweroff='sudo shutdown -h now'
+    alias halt='sudo halt'
+    alias shutdown='sudo shutdown -h now'
+else
+    alias psg='ps -ef | grep '
+    alias psme='ps -ef | grep $USER --color=auto'
+    alias meminfo='free -h -l -t'
+    alias ports='netstat -tulanp'
+    alias reboot='sudo /sbin/reboot'
+    alias poweroff='sudo /sbin/poweroff'
+    alias halt='sudo /sbin/halt'
+    alias shutdown='sudo /sbin/shutdown'
+    # systemd 服务管理 (仅 Linux)
+    alias clashrestart='sudo systemctl restart clash.service'
+fi
+
 alias mount='mount | column -t'
-alias ports='netstat -tulanp'
-alias reboot='sudo /sbin/reboot'
-alias poweroff='sudo /sbin/poweroff'
-alias halt='sudo /sbin/halt'
-alias shutdown='sudo /sbin/shutdown'
-alias clashrestart='sudo systemctl restart clash.service'
 alias wget='wget -c'
 alias cp='rsync -arvP'
-alias pacman='sudo pacman'
-alias yay='paru'
 alias fdfind='fd'
 alias j='autojump'
+
+# 包管理器别名 - 按系统区分
+if [[ "$OS" == "arch" ]]; then
+    alias pacman='sudo pacman'
+    alias yay='paru'
+elif [[ "$OS" == "ubuntu" ]]; then
+    alias apt='sudo apt'
+    alias apt-get='sudo apt-get'
+    alias snap='sudo snap'
+elif [[ "$OS" == "macos" ]]; then
+    alias brew='brew'
+    alias mas='mas'
+fi
 
 alias pack='cd ~/apollo/application-pnc/ && tar -zcvf ~/apollo/$(date +%Y_%m_%d_%H_%M_%S).tar.gz --exclude=\*.pt --exclude=\*.md --exclude=\*.png --exclude=\*.jpg modules/planning profiles/default' 
 alias commiting='git add --all && git commit -m "Commit at $(date)" && pack'
@@ -235,34 +301,101 @@ alias github='github-desktop'
 autoload bashcompinit
 bashcompinit
 
+# 跨平台工具函数
 alias genpass="openssl rand -base64 30 | tr -d "\n" | cut -c1-15"
+
+# 跨平台文件管理器
+if [[ "$OS" == "macos" ]]; then
+    alias open='open'
+    alias o='open'
+elif [[ "$OS" == "arch" || "$OS" == "ubuntu" ]]; then
+    alias open='xdg-open'
+    alias o='xdg-open'
+fi
+
+# 跨平台剪贴板
+if [[ "$OS" == "macos" ]]; then
+    alias pbcopy='pbcopy'
+    alias pbpaste='pbpaste'
+    alias copy='pbcopy'
+    alias paste='pbpaste'
+elif [[ "$OS" == "arch" || "$OS" == "ubuntu" ]]; then
+    if command -v xclip &> /dev/null; then
+        alias pbcopy='xclip -selection clipboard'
+        alias pbpaste='xclip -selection clipboard -o'
+        alias copy='xclip -selection clipboard'
+        alias paste='xclip -selection clipboard -o'
+    elif command -v xsel &> /dev/null; then
+        alias pbcopy='xsel --clipboard --input'
+        alias pbpaste='xsel --clipboard --output'
+        alias copy='xsel --clipboard --input'
+        alias paste='xsel --clipboard --output'
+    fi
+fi
 
 export PATH="$PATH:$HOME/.local/bin"
 
-# ccache 配置
-#export PATH="/usr/lib/ccache/bin/:$PATH"
-#export PATH="/usr/lib/colorgcc/bin/:$PATH"
-export CCACHE_PATH="/usr/bin"
+# ccache 配置 - 跨平台兼容
+if [[ "$OS" != "macos" ]]; then
+    # Linux 系统的 ccache 配置
+    #export PATH="/usr/lib/ccache/bin/:$PATH"
+    #export PATH="/usr/lib/colorgcc/bin/:$PATH"
+    export CCACHE_PATH="/usr/bin"
+    alias clear="TERM=xterm /usr/bin/clear"
+else
+    # macOS 的 ccache 配置
+    if command -v ccache &> /dev/null; then
+        export CCACHE_PATH="/opt/homebrew/bin"
+    fi
+    alias clear="clear"
+fi
 
-alias clear="TERM=xterm /usr/bin/clear"
-
-# Apollo 环境配置
+# 开发工具环境配置 - 跨平台兼容
+# Apollo 环境配置 (如果存在)
 [ -s /opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash ] && \. "/opt/apollo/neo/packages/env-manager-dev/latest/scripts/auto_complete.bash"
 
-export PATH=$PATH:/opt/apache-spark/bin
+# Apache Spark 配置 (如果存在)
+[ -d /opt/apache-spark/bin ] && export PATH=$PATH:/opt/apache-spark/bin
 
-PATH=~/.console-ninja/.bin:$PATH
+# Console Ninja 配置 (如果存在)
+[ -d ~/.console-ninja/.bin ] && PATH=~/.console-ninja/.bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pnpm
-export PNPM_HOME="/Users/sakurapuare/Library/pnpm"
+# pnpm 配置 - 跨平台兼容
+if [[ "$OS" == "macos" ]]; then
+    export PNPM_HOME="/Users/sakurapuare/Library/pnpm"
+else
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+fi
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-[ -f "/root/.acme.sh/acme.sh.env" ] && . "/root/.acme.sh/acme.sh.env"
+
+# timeout 命令别名 - 跨平台兼容
+if [[ "$OS" == "macos" ]]; then
+    # macOS 使用 gtimeout (需要安装 coreutils)
+    if command -v gtimeout &> /dev/null; then
+        alias timeout='gtimeout'
+    fi
+    export PATH="/opt/homebrew/bin:$PATH"
+else
+    # Linux 系统原生支持 timeout
+    # timeout 命令已内置，无需别名
+fi
+
+# Docker CLI completions - 跨平台兼容
+if [[ "$OS" == "macos" ]]; then
+    # macOS Docker Desktop
+    fpath=(/Users/sakurapuare/.docker/completions $fpath)
+else
+    # Linux Docker
+    fpath=($HOME/.docker/completions $fpath)
+fi
+# compinit is already called by Zim framework, no need to call it again
+# End of Docker CLI completions
