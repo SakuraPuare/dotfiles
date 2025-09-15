@@ -278,7 +278,6 @@ fi
 alias mount='mount | column -t'
 alias wget='wget -c'
 alias cp='rsync -arvP'
-alias j='autojump'
 
 if command -v fdfind &> /dev/null; then
     alias fd='fdfind'
