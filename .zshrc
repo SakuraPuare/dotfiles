@@ -278,8 +278,11 @@ fi
 alias mount='mount | column -t'
 alias wget='wget -c'
 alias cp='rsync -arvP'
-alias fdfind='fd'
 alias j='autojump'
+
+if command -v fdfind &> /dev/null; then
+    alias fd='fdfind'
+fi
 
 # 包管理器别名 - 按系统区分
 if [[ "$OS" == "arch" ]]; then
