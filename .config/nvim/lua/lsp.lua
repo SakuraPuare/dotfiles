@@ -39,7 +39,8 @@ local navic = require("nvim-navic")
 local lspconfig = require("lspconfig")
 
 
-require("mason-lspconfig").setup_handlers({
+require("mason-lspconfig").setup({
+	handlers = {
 	function(server_name)
 		require("lspconfig")[server_name].setup {}
 	end,
@@ -66,6 +67,7 @@ require("mason-lspconfig").setup_handlers({
 			}
 		}
 	end
+	}
 })
 
 
