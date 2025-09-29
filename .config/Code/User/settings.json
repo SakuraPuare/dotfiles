@@ -187,7 +187,13 @@
     "terminal.integrated.fontFamily": "Maple Mono NF CN",
     "security.workspace.trust.untrustedFiles": "open",
     "tailwindCSS.emmetCompletions": true,
-    "terminal.integrated.env.linux": {},
+    "terminal.integrated.env.linux": {
+        "PATH": "/opt/unreal-engine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64:${env:PATH}",
+        "DOTNET_ROOT": "/opt/unreal-engine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64",
+        "DOTNET_HOST_PATH": "/opt/unreal-engine/Engine/Binaries/ThirdParty/DotNet/8.0.300/linux-x64/dotnet",
+        "DOTNET_MULTILEVEL_LOOKUP": "0",
+        "DOTNET_ROLL_FORWARD": "LatestMajor"
+    },
     "console-ninja.featureSet": "Community",
     "remote.autoForwardPortsSource": "hybrid",
     "git.confirmSync": false,
@@ -200,9 +206,7 @@
     "github.copilot.editor.enableAutoCompletions": true,
     "diffEditor.maxComputationTime": 0,
     "background.fullscreen": {
-        "images": [
-            
-        ],
+        "images": [],
         "opacity": 0.95,
         "size": "cover",
         "position": "center",
@@ -243,7 +247,7 @@
         "plaintext": false,
         "markdown": true,
         "scminput": false,
-        "cpp": false
+        "cpp": true
     },
     "jupyter.askForKernelRestart": false,
     "notebook.cellToolbarLocation": {
@@ -257,7 +261,7 @@
     "terminal.integrated.env.windows": {},
     "github.copilot.preferredAccount": "howstay",
     "background.enabled": true,
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "C_Cpp.intelliSenseEngine": "disabled",
     "clangd.inactiveRegions.useBackgroundHighlight": true,
     "qt-core.qtInstallationRoot": "/home/sakurapuare/Qt",
     "window.confirmSaveUntitledWorkspace": false,
@@ -272,4 +276,21 @@
         "GitHub.vscode-pull-request-github"
     ],
     "C_Cpp.default.cppStandard": "c++23",
+    "chat.editing.confirmEditRequestRemoval": false,
+    "qt-core.additionalQtPaths": [
+        {
+            "name": "Qt-5.15.17-linux-g++_from_PATH",
+            "path": "/usr/bin/qmake"
+        }
+    ],
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "github.copilot.chat.codesearch.enabled": true,
+    "github.copilot.chat.agent.terminal.allowList": {
+        "mv": true,
+        "rm": true,
+        "git": true,
+        "cp": true
+    },
+    "cmake.showConfigureWithDebuggerNotification": false,
+    "git.openRepositoryInParentFolders": "always",
 }
