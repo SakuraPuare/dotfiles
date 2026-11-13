@@ -1,4 +1,4 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -143,8 +143,8 @@ unset key
 
 # Created by newuser for 5.9
 
-# export http_proxy='http://localhost:7890'
-# export https_proxy='http://localhost:7890'
+#export http_proxy='http://localhost:7890'
+#export https_proxy='http://localhost:7890'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -379,7 +379,6 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-
 # timeout 命令别名 - 跨平台兼容
 if [[ "$OS" == "macos" ]]; then
     # macOS 使用 gtimeout (需要安装 coreutils)
@@ -402,3 +401,11 @@ else
 fi
 # compinit is already called by Zim framework, no need to call it again
 # End of Docker CLI completions
+
+export PATH=$PATH:/usr/local/go/bin
+
+# 配置 GOPROXY 环境变量
+export GOPROXY=https://goproxy.io,direct
+
+export PATH="$HOME/.local/bin:$PATH"
+
